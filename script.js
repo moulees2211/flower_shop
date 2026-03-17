@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const isLoginPage = window.location.href.includes('login.html');
-    const isAdminPage = window.location.href.includes('admin.html');
+    const isLoginPage = window.location.href.includes('login.html') || window.location.pathname.includes('/login');
+    const isAdminPage = window.location.href.includes('admin.html') || window.location.pathname.includes('/admin');
     
     // Check authentication for admin page
     if (isAdminPage && sessionStorage.getItem('bloomAdminLoggedIn') !== 'true') {
@@ -353,6 +353,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderCategories() {
+        if (!categoriesList) return;
+        
         // Render Nav
         let navHtml = `<li class="category-item ${currentCategoryFilter === 'all' ? 'active' : ''}" data-id="all">All Products</li>`;
         
@@ -407,6 +409,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function renderProducts() {
+        if (!productsGrid) return;
+
         productsGrid.innerHTML = '';
         
         let filteredProducts = products;
