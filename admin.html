@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Shop Admin Panel</title>
+    <link rel="icon" href="OIP.webp" type="image/webp">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-content">
+                <h1><img src="OIP.webp" alt="Shop Logo" class="shop-logo"> Admin Panel</h1>
+                <p>Manage your beautiful flower shop products</p>
+                <a href="index.html" style="color: var(--primary-color); text-decoration: none; margin-top: 10px; display: inline-block; font-weight: 500;"><i class="fa-solid fa-arrow-left"></i> View Shop</a>
+            </div>
+            <div class="header-actions">
+                <button id="logout-btn" class="secondary-btn" style="border-color: #e05252; color: #e05252;"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                <button id="edit-shop-info-btn" class="secondary-btn"><i class="fa-solid fa-pen-to-square"></i> Edit Shop Info</button>
+                <button id="add-category-btn" class="secondary-btn"><i class="fa-solid fa-folder-plus"></i> Add Category</button>
+                <button id="add-product-btn" class="primary-btn"><i class="fa-solid fa-plus"></i> Add Product</button>
+            </div>
+        </header>
+
+        <div class="categories-container">
+            <div class="categories-header">
+                <button id="categories-toggle" class="hamburger-btn">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <h3 id="current-category-title">All Products</h3>
+            </div>
+            <div class="categories-dropdown" id="categories-dropdown">
+                <ul id="categories-list">
+                    <li class="category-item active" data-id="all">All Products</li>
+                    <!-- Categories will be dynamically generated here -->
+                </ul>
+            </div>
+        </div>
+
+        <main>
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be dynamically generated here -->
+            </div>
+        </main>
+
+        <!-- Add/Edit Product Modal -->
+        <div id="product-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2 id="modal-title">Add New Product</h2>
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
+                    
+                    <div class="form-group">
+                        <label for="product-name">Flower Name</label>
+                        <input type="text" id="product-name" required placeholder="e.g. Red Rose Bouquet">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-category">Category</label>
+                        <select id="product-category" required class="form-select">
+                            <option value="">Select a Category</option>
+                            <!-- dynamic options -->
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-price">Price ($)</label>
+                        <input type="number" id="product-price" required step="0.01" min="0" placeholder="e.g. 29.99">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Product Image</label>
+                        <div class="image-upload-container">
+                            <input type="file" id="product-img" accept="image/*" class="file-input" multiple>
+                            <label for="product-img" class="file-label">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <span>Click to upload up to 20 images</span>
+                            </label>
+                        </div>
+                        <div id="image-preview" class="image-preview"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Save Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Category Modal -->
+    <div id="category-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-category-btn close-btn">&times;</span>
+            <h2>Add New Category</h2>
+            <form id="category-form">
+                <div class="form-group">
+                    <label for="category-name">Category Name</label>
+                    <input type="text" id="category-name" required placeholder="e.g. Wedding Bouquets">
+                </div>
+                <button type="submit" class="submit-btn" style="margin-top:0;">Save Category</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Edit Shop Info Modal -->
+    <div id="shop-info-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-shop-info-btn close-btn">&times;</span>
+            <h2>Edit Shop Information</h2>
+            <form id="shop-info-form">
+                <div class="form-group">
+                    <label for="shop-name-input">Shop Name</label>
+                    <input type="text" id="shop-name-input" required placeholder="e.g. Bloom Flower Shop">
+                </div>
+                <div class="form-group">
+                    <label for="shop-desc-input">Shop Description</label>
+                    <input type="text" id="shop-desc-input" required placeholder="e.g. Browse our beautiful flower collections">
+                </div>
+                <button type="submit" class="submit-btn" style="margin-top:0;">Save Information</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox-modal" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <a class="lightbox-prev">&#10094;</a>
+        <a class="lightbox-next">&#10095;</a>
+        <div class="lightbox-thumbnails" id="lightbox-thumbnails"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

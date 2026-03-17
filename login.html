@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Bloom Flower Shop</title>
+    <link rel="icon" href="OIP.webp" type="image/webp">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .login-box {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .login-box h2 {
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .login-box p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+        .login-box .form-group {
+            text-align: left;
+        }
+        .error-message {
+            color: #e05252;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        .login-box input[type="password"] {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+        .login-box input[type="password"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+    </style>
+</head>
+<body class="login-container">
+    <div class="login-box">
+        <img src="OIP.webp" alt="Shop Logo" style="height: 60px; margin-bottom: 1rem; object-fit: contain;">
+        <h2>Admin Login</h2>
+        <p>Enter your credentials to manage the shop</p>
+        
+        <form id="login-form">
+            <div id="login-error" class="error-message">Invalid username or password.</div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required placeholder="Enter password">
+            </div>
+            <button type="submit" class="submit-btn" style="margin-top: 0.5rem;">Login</button>
+            <a href="index.html" style="display: block; margin-top: 1.5rem; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: color 0.2s;">&larr; Back to Shop</a>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
